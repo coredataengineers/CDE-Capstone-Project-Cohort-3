@@ -113,7 +113,7 @@ For reproducibility across environments,
 - `Terraform State` File backend managed in the cloud using Object Storage.
 
 ### BONUS (NOT MANDATORY)
-Derive any insights from the Data Set, and any recommendations on what `` can do as a result of the data available.
+Derive any insights from the Data Set, and any recommendations on what `CDEBite` can do as a result of the data available.
 
 
 ### SUBMISSION REQUIREMENTS
