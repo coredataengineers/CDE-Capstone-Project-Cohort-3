@@ -1,10 +1,10 @@
 # CDE-Capstone-Project-Cohort-3
 
 # BUSINESS SCENARIO
-**Client**: CDEBite  
-**Headquarters**: Valencia, Spain (Operating Markets: Lisbon, Porto, Braga, and Coimbra, Portugal)  
-**Engineering Role**: Consulting Data Engineer   
-**Objective**: Unified Multi-Source Ingestion & Dimensional Analytics Modeling in the On-Demand Food Delivery Domain
+`Client`: CDEBite  
+`Headquarters`: Valencia, Spain (Operating Markets: Lisbon, Porto, Braga, and Coimbra, Portugal)  
+`Engineering Role`: Consulting Data Engineer   
+`Objective`: Unified Multi-Source Ingestion & Dimensional Analytics Modeling in the On-Demand Food Delivery Domain
 
 Headquartered in Valencia, Spain, CDEBite is an on-demand food delivery platform that connects customers browsing menus on its mobile and web apps with local restaurants and couriers across Lisbon, Porto, Braga, and Coimbra, Portugal. As order volume has scaled rapidly, operational data has become fragmented across disconnected tools: transactional records in Supabase PostgreSQL, high-frequency clickstream and courier telemetry in AWS S3 Parquet partitions, and commercial/operational trackers maintained manually across four Google Sheets.
 
