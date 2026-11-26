@@ -2,24 +2,29 @@
 
 # BUSINESS SCENARIO
 `Client`: CDEBite  
-`Headquarters`: Valencia, Spain (Operating Markets: Lisbon, Porto, Braga, and Coimbra, Portugal)  
+`Headquarters`: Valencia, Spain  
 `Engineering Role`: Consulting Data Engineer   
 `Objective`: Unified Multi-Source Ingestion & Dimensional Analytics Modeling in the On-Demand Food Delivery Domain
 
-Headquartered in Valencia, Spain, CDEBite is an on-demand food delivery platform that connects customers browsing menus on its mobile and web apps with local restaurants and couriers across Lisbon, Porto, Braga, and Coimbra, Portugal. As order volume has scaled rapidly, operational data has become fragmented across disconnected tools: transactional records in Supabase PostgreSQL, high-frequency clickstream and courier telemetry in AWS S3 Parquet partitions, and commercial/operational trackers maintained manually across four Google Sheets.
+Headquartered in Valencia, Spain, `CDEBite` is an on-demand `food delivery platform` that connects customers browsing menus on its mobile and web apps with local restaurants and couriers across Lisbon, Porto, Braga, and Coimbra in Portugal. 
 
-Because these systems evolved independently without unified data modeling or governance, leadership faces critical blind spots:
+As order volume has scaled rapidly, operational data has become fragmented across disconnected tools: transactional records in `Supabase PostgreSQL`, high-frequency clickstream and courier telemetry in `AWS S3 Parquet` partitions, and commercial/operational trackers maintained manually across `four Google Sheets`.
 
-- Unclear Order Profitability: Finance and operations cannot accurately calculate net contribution margin per order when payment retries, promotional discounts, changing restaurant commission rates, courier shift and bonus rates, and support refunds live across separate systems and manual sheets.
-- Unexplained Delivery Delays: When deliveries run late, or orders are cancelled, teams cannot determine whether delays stem from restaurant preparation times, courier transit times, shift coverage gaps, or peak-hour congestion across cities and cuisines.
-- Unverified Marketing & Funnel Performance: Marketing lacks visibility into which promotional codes drive repeat orders versus one-time discount usage, as well as where users drop off across the app-to-checkout funnel.
-- Data Reliability & Reconciliation Friction: Manual spreadsheet formatting inconsistencies, duplicate GPS/payment retries, late-arriving event partitions, and changing partner contract terms create reporting discrepancies and slow down cross-functional decisions.
+Because these systems evolved independently without unified data modeling or governance, leadership faces `critical blind spots`:
+
+- `Unclear Order Profitability`: Finance and operations cannot accurately calculate net contribution margin per order when payment retries, promotional discounts, changing restaurant commission rates, courier shift and bonus rates, and support refunds live across separate systems and manual sheets.
+  
+- `Unexplained Delivery Delays`: When deliveries run late, or orders are cancelled, teams cannot determine whether delays stem from restaurant preparation times, courier transit times, shift coverage gaps, or peak-hour congestion across cities and cuisines.
+  
+- `Unverified Marketing & Funnel Performance`: Marketing lacks visibility into which promotional codes drive repeat orders versus one-time discount usage, as well as where users drop off across the app-to-checkout funnel.
+  
+- `Data Reliability & Reconciliation Friction`: Manual spreadsheet formatting inconsistencies, duplicate GPS/payment retries, late-arriving event partitions, and changing partner contract terms create reporting discrepancies and slow down cross-functional decisions.
 
 
-You have been brought in as a `Data Engineer` to design and implement a `Unified Data Platform ` that solves these problems. To solve this problem, you need to build a physical data platform that combines various tools and technologies.
+You have been brought in as a `Data Engineer` to design and implement a `Unified Data Platform ` that solves these problems. To solve this problem, you need to build their data platform that combines various technologies.
 
 ### Data Sources
-The following eleven entities span CDEBite’s transactional database, partitioned event/telemetry Parquet files in S3, and four operational Google Sheets. Engineers should expect real-world grime: varying timestamps and date formats, nullable fields, duplicate retries, casing/whitespace noise, and late-arriving partitions. 
+The following eleven entities span CDEBite’s `transactional database`, partitioned event/telemetry Parquet files in `S3`, and four operational `Google Sheets`. Engineers should expect real-world grime: varying timestamps and date formats, nullable fields, duplicate retries, casing/whitespace noise, and late-arriving partitions. 
 
 They are as follows:
 
@@ -28,8 +33,9 @@ They are as follows:
 - `Description:` Food Delivery Platform transactional database, including tables such as  Users, Order_items etc.
 - `Format:` Database Table
 - `Data Location:` In a Transactional Postgres Database
-  - Database credentials located here: [SSM Paramter](
+  - Database `credentials` located here: [SSM Paramter](
   https://eu-central-1.console.aws.amazon.com/systems-manager/parameters/%252Fproduction%252Fsupabase%252Fdatabase%252Fcredentials/description?region=eu-central-1&tab=Table) in AWS
+
 - **Tables**
    - `Users` - user_id (PK), full_name, email, phone_number, city, signup_at, account_status, updated_at
    - `Restaurants` - restaurant_id (PK), restaurant_name, cuisine_type, city, street_address, latitude, longitude, avg_prep_time_mins, is_active, created_at, updated_at
@@ -62,7 +68,7 @@ They are as follows:
   - However, the expectation is that your pipeline must be designed to extract the objects from s3.
   - Full Permissions on s3 and SSM have been given to your user along with permissions to create Access and Secret Key.
 
-#### !DO NOT EXPOSE/PUSH THE KEYS ON GITHUB.
+#### DO NOT EXPOSE/PUSH THE KEYS ON GITHUB !!!!!!!!!!!.
 
 The Google Sheets Operational & Commercial Tracker Datasets provided above `MUST` be moved to your own `PRIVATE` google sheet account, this will allow you to set up all necessary `CREDENTIALS` like `SERVICE ACCOUNT` to be able to communicate with Google API to be able to programatically extract the data from the spread sheet.
 
