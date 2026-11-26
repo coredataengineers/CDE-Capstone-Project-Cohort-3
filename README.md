@@ -134,7 +134,7 @@ Derive any insights from the Data Set, and any recommendations on what `CDEBite`
   - e.t.c.
 
 A `Power Point` or something similar for presentation of the entire project to the management.
-Project submission will close on the `5th December, 2026`.
+Project submission will close on the `xyz`.
 
 Github link should be submitted via the link [HERE]().
 
