@@ -28,20 +28,22 @@ They are as follows:
 - `Description:` Food Delivery Platform transactional database, including tables such as  Users, Order_items etc.
 - `Format:` Database Table
 - `Data Location:` In a Transactional Postgres Database
-  - Database credentials located here: [SSM Paramter]() in AWS
+  - Database credentials located here: [SSM Paramter](
+  https://eu-central-1.console.aws.amazon.com/systems-manager/parameters/%252Fproduction%252Fsupabase%252Fdatabase%252Fcredentials/description?region=eu-central-1&tab=Table) in AWS
 - **Tables**
    - `Users` - user_id (PK), full_name, email, phone_number, city, signup_at, account_status, updated_at
    - `Restaurants` - restaurant_id (PK), restaurant_name, cuisine_type, city, street_address, latitude, longitude, avg_prep_time_mins, is_active, created_at, updated_at
    - `Orders` - order_id (PK), user_id, restaurant_id, courier_id, promo_code, order_status, subtotal_amount, delivery_fee, discount_amount, total_amount, placed_at, preparing_at, picked_up_at, delivered_at, cancelled_at, updated_at
    - `Order_Items` - order_item_id (PK), order_id, item_name, item_category, quantity, unit_price, line_total, created_at
    - `Payments` - payment_id (PK), order_id, payment_method, payment_status, amount, currency, provider_txn_ref, attempt_number, created_at, updated_at
+   - `Couriers` - courier_id (PK), full_name, phone_number, city, vehicle_type, created_at
 
   
 ### 2. AWS S3 (Partitioned Parquet Event & Telemetry Streams)
 
 - `Description:` Food Delivery Platform Telemetry data tracking delivery driver information, and platform events.
 - `Format:` Parquet 
-- `Data Location:` In an S3 Data Lake on [AWS HERE]()
+- `Data Location:` In an S3 Data Lake on [AWS HERE](https://eu-central-1.console.aws.amazon.com/s3/buckets/cde-capstone-project?region=eu-central-1)
 - **Entities**
    - `App_Events` - event_id (PK), session_id, user_id, order_id, restaurant_id, event_name, event_timestamp, ingested_at, promo_code, device_platform, app_version, city, event_properties (nested JSON/struct), year, month, day
    - `Driver_gps_pings` - ping_id (PK), courier_id, order_id, ping_timestamp, received_at, latitude, longitude, speed_kmh, heading_deg, accuracy_m, courier_status, battery_pct, year, month, day
@@ -51,12 +53,12 @@ They are as follows:
 
 - `Description:` Marketing and Operations google sheets for tracking customer interaction and business performance.
 - `Format:` Google Spreadsheet
-- `Data Location:` In Spreadsheets [HERE]()
+- `Data Location:` In Spreadsheets [HERE](https://drive.google.com/drive/folders/1-VuHw3Rl40UIm98bS988SdUOSpELzisW?usp=sharing)
 - `Frequency:` These are Static Datasets
 
 
 ### Note: 
-- To retrieve all Data stored on AWS, use your existing credentials to login and ensure you are in the Stockholm Region.
+- To retrieve all Data stored on AWS, use your existing credentials to login and ensure you are in the Frankfurt Region.
   - However, the expectation is that your pipeline must be designed to extract the objects from s3.
   - Full Permissions on s3 and SSM have been given to your user along with permissions to create Access and Secret Key.
 
