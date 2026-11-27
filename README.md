@@ -1,12 +1,10 @@
-# CDE-Capstone-Project-Cohort-3
-
 # BUSINESS SCENARIO
-`Client`: CDEBite  
-`Headquarters`: Valencia, Spain  
-`Engineering Role`: Consulting Data Engineer   
+`Client`: CDEBite
+`Headquarters`: Valencia, Spain
+`Engineering Role`: Consulting Data Engineer
 `Objective`: Unified Multi-Source Ingestion & Dimensional Analytics Modeling in the On-Demand Food Delivery Domain
 
-Headquartered in Valencia, Spain, `CDEBite` is an on-demand `food delivery platform` that connects customers browsing menus on its mobile and web apps with local restaurants and couriers across Lisbon, Porto, Braga, and Coimbra in Portugal. 
+Headquartered in Valencia, Spain, `CDEBite` is an on-demand `food delivery platform` that connects customers browsing menus on its mobile and web apps with local restaurants and couriers across Lisbon, Porto, Braga, and Coimbra in Portugal.
 
 As order volume has scaled rapidly, operational data has become fragmented across disconnected tools: transactional records in `Supabase PostgreSQL`, high-frequency clickstream and courier telemetry in `AWS S3 Parquet` partitions, and commercial/operational trackers maintained manually across `four Google Sheets`.
 
@@ -24,7 +22,7 @@ Because these systems evolved independently without unified data modeling or gov
 You have been brought in as a `Data Engineer` to design and implement a `Unified Data Platform ` that solves these problems. To solve this problem, you need to build their data platform that combines various technologies.
 
 ### Data Sources
-The following eleven entities span CDEBite’s `transactional database`, partitioned event/telemetry Parquet files in `S3`, and four operational `Google Sheets`. Engineers should expect real-world grime: varying timestamps and date formats, nullable fields, duplicate retries, casing/whitespace noise, and late-arriving partitions. 
+The following eleven entities span CDEBite’s `transactional database`, partitioned event/telemetry Parquet files in `S3`, and four operational `Google Sheets`. Engineers should expect real-world grime: varying timestamps and date formats, nullable fields, duplicate retries, casing/whitespace noise, and late-arriving partitions.
 
 They are as follows:
 
@@ -33,7 +31,7 @@ They are as follows:
 - `Description:` Food Delivery Platform transactional database, including tables such as  Users, Order_items etc.
 - `Format:` Database Table
 - `Data Location:` In a Transactional Postgres Database
-  - Database `credentials` located here: [SSM Paramter](
+  - Database `credentials` located here: [SSM Parameter Store](
   https://eu-central-1.console.aws.amazon.com/systems-manager/parameters/%252Fproduction%252Fsupabase%252Fdatabase%252Fcredentials/description?region=eu-central-1&tab=Table) in AWS
 
 - **Tables**
@@ -48,7 +46,7 @@ They are as follows:
 ### 2. AWS S3 (Partitioned Parquet Event & Telemetry Streams)
 
 - `Description:` Food Delivery Platform Telemetry data tracking delivery driver information, and platform events.
-- `Format:` Parquet 
+- `Format:` Parquet
 - `Data Location:` In an S3 Data Lake on [AWS HERE](https://eu-central-1.console.aws.amazon.com/s3/buckets/cde-capstone-project?region=eu-central-1)
 - **Entities**
    - `App_Events` - event_id (PK), session_id, user_id, order_id, restaurant_id, event_name, event_timestamp, ingested_at, promo_code, device_platform, app_version, city, event_properties (nested JSON/struct), year, month, day
@@ -107,7 +105,7 @@ Since the output of your work will be consumed by downstream users for Analytics
   - Etc.
 
 ### Containerization:
-For reproducibility across environments, 
+For reproducibility across environments,
 - You need to package all your code as a Docker image and push the image to a cloud-based container registry (e.g Docker Hub).
 - This includes all of your Python code and DAG.
 
